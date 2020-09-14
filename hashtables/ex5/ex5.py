@@ -6,7 +6,17 @@ def finder(files, queries):
     """
     YOUR CODE HERE
     """
-    # Your code here
+    hashTable = {}
+    result = []
+    for f in files:
+        f = f.split("/")
+        if f[-1] not in hashTable:
+            hashTable[f[-1]] = []
+        hashTable[f[-1]].append("/".join(f[:-1]))
+    for q in queries:
+        if q in hashTable:
+            for f in hashTable[q]:
+                result.append(f + "/" + q)
 
     return result
 
